@@ -1,11 +1,17 @@
 
-import './App.css';
+import 'antd/dist/reset.css';
+// import {Header} from 'antd'
+import Home from './Components/Pages/Home';
 
 function App() {
   return (
-    <div className="App">
+    <>
+    
+    <Home>
       
-    </div>
+    </Home>
+    
+    </>
   );
 }
 
