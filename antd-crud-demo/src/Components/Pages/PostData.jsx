@@ -2,24 +2,34 @@ import React from 'react'
 import { Button, Form, Input, Typography } from 'antd';
 import {useState} from 'react'
 import axios from 'axios'
+import {useNavigate} from "react-router-dom"
 
 
-const Create = () => {
+
+const PostData = () => {
     const { Title } = Typography; 
+    
+    const directPage = useNavigate();
 
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
     const [email, setEmail] = useState('')
 
+    const header = {'Allow-Control-Allow-Origin': "*",}
   
     const handleSubmit = (data) => {
         //data is receiving data from the name attribute in the input text field. onFinish prop instead of onSubmit in form.
-        console.log(typeof(data))
-        axios.post({
-            url: "https://6481788729fa1c5c50316f7a.mockapi.io/demo-react-crud",
-            
-        })
+
+        
+        axios.post(
+            "https://6481788729fa1c5c50316f7a.mockapi.io/demo-react-crud",
+            data, 
+            header,
+        ).then(
+          directPage("/getdata")
+        )
     }
+
   return (
     <Form onFinish={handleSubmit} style={{marginTop: "40px"}} >
       <Title className="site-layout-content" level={3} >Add details Here</Title>
@@ -39,4 +49,4 @@ const Create = () => {
   );
 }
 
-export default Create;
+export default PostData;
