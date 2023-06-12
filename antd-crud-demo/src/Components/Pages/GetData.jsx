@@ -1,7 +1,7 @@
 
 import React from 'react'
 import {DeleteFilled, EditTwoTone } from "@ant-design/icons";
-import {Space, Table, Typography, } from 'antd';
+import {Space, Table, Typography, Button, } from 'antd';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import {useState, useEffect} from "react"
@@ -77,7 +77,6 @@ const handleEditBtn = (id, name, age, email) => {
 }
 
 const handleDelete=(Id)=>{
-  console.log(Id) 
   axios.delete(
     `https://6481788729fa1c5c50316f7a.mockapi.io/demo-react-crud/${Id}`)
     .then((res) => {
@@ -90,7 +89,12 @@ const handleDelete=(Id)=>{
   return (
     <div >
       <Title level={3}>List of people</Title>
+
       <Table dataSource={incData} columns={columns} style={{width:" 60%", marginTop: '40px'}} ></Table>
+
+      <Link to={'/'}>
+        <Button htmlType='submit' >Create New</Button>
+      </Link>
     </div>
   )
 }

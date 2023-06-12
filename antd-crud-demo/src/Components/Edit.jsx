@@ -3,7 +3,7 @@ import { Button, Form, Input, Typography, } from 'antd';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import 'antd/dist/reset.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link} from 'react-router-dom';
 
 
 
@@ -26,6 +26,7 @@ const Edit = () => {
     }, [])
 
     const handleUpdate = (data) => {
+        //this data is recieved by submit form as a object after onFinish prop.
         console.log(data);
         axios.put(`https://6481788729fa1c5c50316f7a.mockapi.io/demo-react-crud/${id}`, 
             data, 
@@ -49,6 +50,10 @@ const Edit = () => {
         </Form.Item>
         <Form.Item >
             <Button htmlType="submit">Update</Button>
+            
+            <Link to={'/getdata'}>
+            <Button htmlType="submit">Back</Button>
+            </Link>
         </Form.Item>
         </Form>
     </>

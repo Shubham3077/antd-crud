@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Form, Input, Typography } from 'antd';
 import {useState} from 'react'
 import axios from 'axios'
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 
 
 
@@ -31,7 +31,10 @@ const PostData = () => {
     }
 
   return (
-    <Form onFinish={handleSubmit} style={{marginTop: "40px"}} >
+
+    <>
+      
+      <Form onFinish={handleSubmit} style={{marginTop: "40px"}} >
       <Title className="site-layout-content" level={3} >Add details Here</Title>
       <Form.Item label="Name" name="name">
         <Input placeholder="Enter your name" onChange={(event) => setName(event.target.value)} value={name}/>
@@ -46,6 +49,12 @@ const PostData = () => {
         <Button htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
+
+    <Link to={'/getdata'}>
+      <Button style={{marginTop: "50px"}} htmlType="submit" >View List</Button>
+    </Link>
+    </>
+    
   );
 }
 
