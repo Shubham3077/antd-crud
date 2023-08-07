@@ -13,14 +13,7 @@ const Home = () => {
 
   return (
     <Layout className="layout" >
-      <Header style={{ display: 'flex', alignItems: 'center' }}>
-        
-        <Menu theme="dark" mode="horizontal"/>
-
-        <div style={{textAlign: 'center'}}>
-        <Title level={2} style={{ color: 'white' }}> React CRUD</Title>
-        </div>
-      </Header>
+      
       <Content style={{ display: 'flex', justifyContent: 'space-between', padding: '0 50px', color: "blue" }}>
 
       <PostData />

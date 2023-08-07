@@ -10,7 +10,7 @@ import { useNavigate , Link} from 'react-router-dom';
 const Edit = () => {
     const Title = Typography;
     const [id, setId] = useState(0);
-    const [name, setName] = useState('');
+    const [name, setName] = useState("");
     const [age, setAge] = useState('');
     const [email, setEmail] = useState('');
 
@@ -24,12 +24,16 @@ const Edit = () => {
         setEmail(localStorage.getItem('email'));
 
     }, [])
-
     const handleUpdate = (data) => {
+        const payload={
+            name,
+            email,
+            age
+        }
         //this data is recieved by submit form as a object after onFinish prop.
-        console.log(data);
+        console.log(payload);
         axios.put(`https://6481788729fa1c5c50316f7a.mockapi.io/demo-react-crud/${id}`, 
-            data, 
+            payload, 
         ).then (() => {
             navigate('/getdata');
         })
@@ -39,18 +43,18 @@ const Edit = () => {
     <>
         <Form onFinish={handleUpdate} style={{marginTop: "40px"}} >
         <Title className="site-layout-content" level={3} >Update your details</Title>
-        <Form.Item label="Name" name="name">
-            <Input placeholder="Enter your name"  onChange={(e) => setName(e.target.value)}value={name} />
+        <Form.Item label="Name" >
+            <Input placeholder="Enter your name"  onChange={(e) => setName(e.target.value)} value={name} />
         </Form.Item>
-        <Form.Item label="Age" name="age" >
+        <Form.Item label="Age"  >
             <Input type='number' placeholder="Enter your age" onChange={(e) => setAge(e.target.value)} value={age} />
         </Form.Item>
-        <Form.Item label="Email" name="email">
+        <Form.Item label="Email" >
             <Input type='email' placeholder="Enter your Email"  onChange={(e) => setEmail(e.target.value)} value={email} />
         </Form.Item>
         <Form.Item >
             <Button htmlType="submit">Update</Button>
-            
+
             <Link to={'/getdata'}>
             <Button htmlType="submit">Back</Button>
             </Link>

@@ -7,6 +7,7 @@ import axios from "axios";
 import {useState, useEffect} from "react"
 
 
+
 //== useEffect - performs a task/function every time any value or state changes in a component.
 
 
@@ -23,6 +24,7 @@ const GetData = () => {
       setIncData(res.data);
     })
   }
+
   useEffect(()=> {
     arr_data();
   }, [])
@@ -90,13 +92,13 @@ const handleDelete=(Id)=>{
     <div >
       <Title level={3}>List of people</Title>
 
-      <Table dataSource={incData} columns={columns} style={{width:" 60%", marginTop: '40px'}} ></Table>
+      <Table key={Math.random()} dataSource={incData} columns={columns} style={{width:" 60%", marginTop: '40px'}} ></Table>
 
-      <Link to={'/'}>
+      <Link to={'/edit'}>
         <Button htmlType='submit' >Create New</Button>
       </Link>
     </div>
   )
 }
 
-export default GetData
+export default GetData;
